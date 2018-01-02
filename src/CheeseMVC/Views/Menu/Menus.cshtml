@@ -1,0 +1,19 @@
+﻿@using CheeseMVC.Models
+@model IList<CheeseMVC.Models.Menu>
+
+<h1>Menus</h1>
+
+@if (Model.Count == 0)
+{
+    <p>No menus to display. <a asp-controller="Menu" asp-action="Add">Create one.</a></p>
+}
+else
+{
+    <p><a asp-controller="Menu" asp-action="Add">Create a new menu</a></p>
+    <ul>
+        @foreach (Menu menu in Model)
+        {
+            <li><a asp-controller="Menu" asp-action="Index" asp-route-menuID="@menu.ID">@menu.Name</a></li>
+        }
+    </ul>
+}

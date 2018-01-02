@@ -1,0 +1,19 @@
+﻿@using CheeseMVC.Models
+@model CheeseMVC.ViewModels.Menu.ViewMenuViewModel
+
+<h1>@Model.MenuName</h1>
+
+<p>
+    <a asp-controller="Menu" asp-action="AddItem" asp-route-menuID="@Model.MenuID">Add a cheese</a>
+</p>
+
+@if (Model.CheeseNames.Count > 0)
+{
+    <h2>Assigned Cheeses</h2>
+    <ul>
+        @foreach (string name in Model.CheeseNames)
+        {
+            <li>@name</li>
+        }
+    </ul>   
+}

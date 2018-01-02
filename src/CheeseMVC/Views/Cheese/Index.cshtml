@@ -1,0 +1,55 @@
+﻿@using CheeseMVC.Models
+@model IList<Cheese>
+
+<h1>MyCheeses</h1>
+
+<p><a asp-controller="Cheese" asp-action="Add">Add Cheese</a></p>
+
+@if (Model.Count == 0)
+{
+    <p>No cheeses yet!</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Category</th>
+            <th>Rating</th>
+            <th>Odor</th>
+            <th>Age</th>
+            <th>Options</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (Cheese cheese in Model)
+        {
+            <tr>
+                <td>@cheese.Name</td>
+                <td>@cheese.Description</td>
+                <td>
+                    <a asp-controller="Cheese"
+                       asp-action="Category"
+                       asp-route-categoryID="@cheese.CategoryID">@cheese.Category.Name</a>
+                </td>
+                <td>@cheese.Rating</td>
+                <td>@cheese.Odor</td>
+                <td>@cheese.Age</td>
+                <td>
+                    (
+                    <a asp-controller="Cheese"
+                       asp-action="RemoveSingleCheese"
+                       asp-route-cheeseId="@cheese.ID">delete</a>
+                    &nbsp;|&nbsp;
+                    <a asp-controller="Cheese"
+                       asp-action="Edit"
+                       asp-route-cheeseId="@cheese.ID">edit</a>
+                    )
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}

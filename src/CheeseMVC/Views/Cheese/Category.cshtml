@@ -1,0 +1,18 @@
+﻿@using CheeseMVC.Models
+@model CheeseMVC.Models.CheeseCategory
+
+<h1>Category: @Model.Name</h1>
+
+@if (Model.Cheeses.Count > 0)
+{
+    <ul>
+    @foreach (Cheese cheese in Model.Cheeses)
+    {
+        <li>
+            <a asp-controller="Cheese"
+               asp-action="Edit"
+               asp-route-cheeseId="@cheese.ID">@cheese.Name</a>
+        </li>
+    }
+    </ul>
+}
