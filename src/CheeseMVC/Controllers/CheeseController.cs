@@ -140,7 +140,8 @@ namespace CheeseMVC.Controllers
         [Route("/cheese/category")]
         public IActionResult Categories()
         {
-            return View("CategoryList", context.Categories.ToList());
+            //return View("CategoryList", context.Categories.ToList());
+            return Redirect("/category");
         }
 
         [HttpPost]
